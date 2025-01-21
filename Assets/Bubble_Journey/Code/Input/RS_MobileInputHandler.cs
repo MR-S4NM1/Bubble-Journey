@@ -72,20 +72,20 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         #region HandleRotationActions
 
-        //protected void HandleRotationInFlickTokenByPlayer(InputAction.CallbackContext value)
-        //{
-        //    if (value.performed)
-        //    {
-        //        _gameReferee.GetCurrentFlag.transform.Rotate(
-        //        new Vector3((value.ReadValue<Vector3>() != null ? 
-        //        value.ReadValue<Vector3>().x : value.ReadValue<Vector2>().x) * 
-        //        -4f, 0f, 0f), Space.Self);
-        //    }
-        //    else if (value.canceled)
-        //    {
+        protected void HandleRotationInFlickTokenByPlayer(InputAction.CallbackContext value)
+        {
+            if (value.performed)
+            {
+                //_gameReferee.GetCurrentFlag.transform.Rotate(
+                //new Vector3((value.ReadValue<Vector3>() != null ?
+                //value.ReadValue<Vector3>().x : value.ReadValue<Vector2>().x) *
+                //-4f, 0f, 0f), Space.Self);
+            }
+            else if (value.canceled)
+            {
 
-        //    }
-        //}
+            }
+        }
 
         protected void HandleRotationInFlickTokenByPlayerX(float value)
         {
@@ -104,16 +104,6 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         protected void HandleRotationInFlickTokenByPlayerY(float value)
         {
-            //_gameReferee.GetCurrentFlag.transform.Rotate(
-            //new Vector3(
-            //        value * -4f,                             //Y
-            //        0f,                    //X
-            //        0f                              //Z
-            //    ),
-            //    Space.Self //localRotation
-            //);
-            //_currentSliderYValue = value;
-            //_deltaSliderYValue = _currentSliderYValue - _previousSliderYValue;
             //_gameReferee.GetCurrentFlag.transform.Rotate(
             //new Vector3(
             //        _deltaSliderYValue * -4f,                    //X
