@@ -1,0 +1,76 @@
+{
+    "name": "MobileInputActions",
+    "maps": [
+        {
+            "name": "Mobile",
+            "id": "ba877c4c-f123-4271-8ace-fb8b1ebbb35b",
+            "actions": [
+                {
+                    "name": "TOUCH",
+                    "type": "Value",
+                    "id": "943fac3a-50b5-4bb8-996c-182c97b56879",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ROTATE",
+                    "type": "Value",
+                    "id": "be37727e-503b-41bd-88b4-b06bd3df5325",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "ea7d1fbc-1ada-44ba-a4fa-a53bf1ee4ef5",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TOUCH",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe73f1cf-24b7-4bff-8d1c-322d86993bc3",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TOUCH",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8271a691-07bd-4a1a-90d1-078c23677d23",
+                    "path": "<DualShockGamepad>/{Point}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TOUCH",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "619b063b-9793-46f5-9859-ec77bc4b15dd",
+                    "path": "<Gyroscope>/angularVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ROTATE",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
