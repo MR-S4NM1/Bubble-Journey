@@ -17,7 +17,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         [SerializeField] protected GameObject _defeatPanel;
         [SerializeField] protected GameObject _pausePanel;
         [SerializeField] protected TextMeshProUGUI _hpNarrator;
-        [SerializeField] protected RS_MobileInputHandler _mobileInputHandler;
+        [SerializeField] protected BJ_MobileInputHandler _mobileInputHandler;
 
         #endregion
 
