@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Pool;
 
 namespace MrSanmiAndNAwakening.BubbleJourney
 {
@@ -28,15 +29,41 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         #region UnityMethods
 
+        #endregion
+
+        #region UnityMethods
+
         void Start()
         {
             InitializeAvatar();
             _movementDirection = Vector2.zero;
         }
 
+        private void OnEnable()
+        {
+            BubblePool.instance.AddBubbles();
+        }
+
         private void FixedUpdate()
         {
             _rb2D.velocity = _movementDirection * _movementSpeed;
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Obstacle"))
+            {
+                BubblePool.instance.AlertAboutDeath();
+                this.gameObject.SetActive(false);
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Powerup"))
+            {
+                BubblePool.instance.AddBubbles();
+            }
         }
 
         #endregion
