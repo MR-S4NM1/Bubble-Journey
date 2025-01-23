@@ -16,7 +16,10 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         [SerializeField] protected GameObject _gamePanel;
         [SerializeField] protected GameObject _defeatPanel;
         [SerializeField] protected GameObject _pausePanel;
-        [SerializeField] protected TextMeshProUGUI _hpNarrator;
+        [SerializeField] protected TextMeshProUGUI _currentScore;
+        [SerializeField] protected TextMeshProUGUI _finalScore;
+        [SerializeField] protected TextMeshProUGUI _HighScore;
+        [SerializeField] protected GameObject _newHighScore;
         [SerializeField] protected BJ_MobileInputHandler _mobileInputHandler;
 
         #endregion
@@ -24,6 +27,8 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         #region RuntimeVariables
 
         #endregion
+
+        #region UnityMethods
 
         private void Awake()
         {
@@ -41,13 +46,19 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         {
             _gamePanel.SetActive(true);
             _defeatPanel.gameObject.SetActive(false);
-            //_hpNarrator.text = _gameReferee.GetHealthPoints.ToString();
+            _currentScore.text = "0";
         }
+
+        #endregion
+
+        #region PublicMethods
 
         public void ActivateDefeatPanel()
         {
             _gamePanel.gameObject.SetActive(false);
             _defeatPanel.gameObject.SetActive(true);
+            GameManager.instance.StartGame = false;
+            _finalScore.text = _currentScore.text;
         }
 
         public void ActivateAndDeactivatePausePanel(bool pausePanelBool)
@@ -65,10 +76,12 @@ namespace MrSanmiAndNAwakening.BubbleJourney
             }
         }
 
-        public void UpdatePlayerLife (int playerHP)
+        public void UpdateScore (int score)
         {
-            _hpNarrator.text = playerHP.ToString();
+            _currentScore.text = "Score:" + score.ToString();
         }
+
+        #endregion
     }
 }
 
