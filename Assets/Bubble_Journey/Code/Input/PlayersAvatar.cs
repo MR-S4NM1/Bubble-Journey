@@ -37,7 +37,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         private void OnEnable()
         {
-            BubblePool.instance.AddBubbles();
+            
         }
 
         private void FixedUpdate()
@@ -100,32 +100,32 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         public void OnMOVE(InputAction.CallbackContext value)
         {
             // if(theIsUsingGyro) TODO Bool in Game Referee
-            //if (value.performed)
-            //{
-            //    _movementDirection = Vector2.right;
+            if (value.performed)
+            {
+                _movementDirection = Vector2.right;
 
-            //    xPos = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>()).x;
+                xPos = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>()).x;
 
-            //    if (xPos >= 0.0f)
-            //    {
-            //        _movementDirection = Vector2.right;
-            //        _movementSpeed = 3.0f;
-            //        Debug.Log(_movementDirection);
-            //        _rb2D.velocity = _movementDirection * _movementSpeed;
-            //    }
-            //    else if (xPos < 0.0f)
-            //    {
-            //        _movementDirection = Vector2.left;
-            //        _movementSpeed = 3.0f;
-            //        Debug.Log(_movementDirection);
-            //        _rb2D.velocity = _movementDirection * _movementSpeed;
-            //    }
-            //}
-            //else if (value.canceled)
-            //{
-            //    _movementDirection = Vector2.zero;
-            //    _movementSpeed = 0.0f;
-            //}
+                if (xPos >= 0.0f)
+                {
+                    _movementDirection = Vector2.right;
+                    _movementSpeed = 3.0f;
+                    Debug.Log(_movementDirection);
+                    _rb2D.velocity = _movementDirection * _movementSpeed;
+                }
+                else if (xPos < 0.0f)
+                {
+                    _movementDirection = Vector2.left;
+                    _movementSpeed = 3.0f;
+                    Debug.Log(_movementDirection);
+                    _rb2D.velocity = _movementDirection * _movementSpeed;
+                }
+            }
+            else if (value.canceled)
+            {
+                _movementDirection = Vector2.zero;
+                _movementSpeed = 0.0f;
+            }
         }
 
         public void OnROTATE(InputAction.CallbackContext value)

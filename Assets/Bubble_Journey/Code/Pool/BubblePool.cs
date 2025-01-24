@@ -24,13 +24,27 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         #region RuntimeVariables
 
         [SerializeField] protected PlayersAvatar[] _bubbleList;
-        protected int _bubblesAlive = 1;
+        [SerializeField] protected int _bubblesAlive;
 
         #endregion
 
         #region UnityMethods
+
+        private void Awake()
+        {
+            if(instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(instance);
+            }
+        }
+
         void Start()
         {
+            _bubblesAlive = 1;
         }
 
         void Update()
@@ -64,14 +78,14 @@ namespace MrSanmiAndNAwakening.BubbleJourney
             {
                 _bubblesAlive += 1;
 
-                foreach(PlayersAvatar avatar in _bubbleList)
+                for(int i = 0; i < _poolSize; ++i)
                 {
-                    if (!avatar.isActiveAndEnabled)
+                    if (!_bubbleList[i].gameObject.activeSelf)
                     {
-                        avatar.gameObject.transform.position = (Vector2)_bubblepos.position 
-                            + new Vector2(Random.Range(0.1f, 1.0f), 0.0f);
-                        avatar.gameObject.SetActive(true);
-                        break;
+                        _bubbleList[i].gameObject.transform.position = (Vector2)_bubblepos.position 
+                            + new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(0.0f, 1.0f));
+                        _bubbleList[i].gameObject.SetActive(true);
+                        return;
                     }
                 }
             }

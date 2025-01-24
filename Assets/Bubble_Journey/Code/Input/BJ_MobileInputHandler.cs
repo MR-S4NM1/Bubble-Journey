@@ -24,7 +24,6 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         {
             InitializeMobileInputHandler();
             _playerInput = GetComponent<PlayerInput>();
-            _avatar = FindObjectOfType<PlayersAvatar>(true);
             transform.parent = _avatar.transform;
             transform.localPosition = Vector2.zero;
         }
