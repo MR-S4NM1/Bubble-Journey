@@ -11,28 +11,26 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         #region Knobs
 
         [SerializeField] protected int _poolSize;
-        [SerializeField] protected int _bubblesAlive;
 
         #endregion
 
         #region References
 
         public static BubblePool instance;
-        [SerializeField] protected PlayersAvatar _bubbleGO;
+        [SerializeField] protected Transform _bubblepos;
 
         #endregion
 
-
         #region RuntimeVariables
 
-        [SerializeField] protected List<PlayersAvatar> _bubbleList;
+        [SerializeField] protected PlayersAvatar[] _bubbleList;
+        protected int _bubblesAlive = 1;
 
         #endregion
 
         #region UnityMethods
         void Start()
         {
-            SetupPool();
         }
 
         void Update()
@@ -41,16 +39,6 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         }
         #endregion
 
-        #region LocalMethods
-
-        protected void SetupPool()
-        {
-            _bubbleList = new List<PlayersAvatar>();
-        }
-
-        #endregion
-
-
         #region PublicMethods
 
         public void AlertAboutDeath()
@@ -58,7 +46,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
             if(_bubblesAlive <= 1)
             {
                 _bubblesAlive -= 1;
-                //SceneChanger.instance.ChangeSceneTo(0);
+                UIManager.instance.ActivateDefeatPanel();
             }
             else if(_bubblesAlive >= 2)
             {
@@ -68,7 +56,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         public void AddBubbles()
         {
-            if(_bubblesAlive >= 20)
+            if(_bubblesAlive >= _poolSize)
             {
                 return;
             }
@@ -80,7 +68,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
                 {
                     if (!avatar.isActiveAndEnabled)
                     {
-                        avatar.gameObject.transform.position = (Vector2)_bubbleGO.gameObject.transform.position 
+                        avatar.gameObject.transform.position = (Vector2)_bubblepos.position 
                             + new Vector2(Random.Range(0.1f, 1.0f), 0.0f);
                         avatar.gameObject.SetActive(true);
                         break;

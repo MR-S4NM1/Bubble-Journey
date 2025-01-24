@@ -23,7 +23,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         #region RunTimeVariables
 
-        protected int _score;
+        protected int _score = 0;
         protected bool _startGame = true;
 
         protected int _index;
@@ -31,7 +31,19 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         #endregion
 
         #region UnityMethods
-        
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
+
         void Start()
         {
             StartCoroutine(ScoreManager());
@@ -43,7 +55,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         public void UpdateSpeed()
         {
-            if (_velocity <= 30)
+            if (_velocity <= 10)
             {
                 _velocity += 0.5f;
             }

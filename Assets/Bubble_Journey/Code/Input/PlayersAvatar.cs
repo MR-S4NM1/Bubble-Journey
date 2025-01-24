@@ -29,10 +29,6 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         #region UnityMethods
 
-        #endregion
-
-        #region UnityMethods
-
         void Start()
         {
             InitializeAvatar();
@@ -63,6 +59,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
             if (other.gameObject.CompareTag("Powerup"))
             {
                 BubblePool.instance.AddBubbles();
+                other.gameObject.SetActive(false);
             }
         }
 

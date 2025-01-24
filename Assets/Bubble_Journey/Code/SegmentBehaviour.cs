@@ -14,6 +14,12 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         #endregion
 
+        #region Knobs
+
+        public bool initialSegment;
+
+        #endregion
+
         #region RunTimeVariables
 
         protected int _index;
@@ -24,54 +30,57 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         private void Awake()
         {
-            _index = Random.Range(0, 10);
-            if (_index == 7)
+            if (!initialSegment)
             {
-                _upgrade.SetActive(true);
-            }
-            if (GameManager.instance.GetScore <= 250)
-            {
-                if (_index <= 8)
+                _index = Random.Range(0, 10);
+                if (_index == 7)
                 {
-                    _obstacles[0].SetActive(true);
+                    _upgrade.SetActive(true);
                 }
-                else if (_index == 9)
+                if (GameManager.instance.GetScore <= 250)
                 {
-                    _obstacles[1].SetActive(true);
+                    if (_index <= 8)
+                    {
+                        _obstacles[0].SetActive(true);
+                    }
+                    else if (_index == 9)
+                    {
+                        _obstacles[1].SetActive(true);
+                    }
+                    else
+                    {
+                        _obstacles[2].SetActive(true);
+                    }
+                }
+                else if (GameManager.instance.GetScore > 250 && GameManager.instance.GetScore <= 750)
+                {
+                    if (_index <= 6)
+                    {
+                        _obstacles[1].SetActive(true);
+                    }
+                    else if (_index > 6 && _index <= 8)
+                    {
+                        _obstacles[0].SetActive(true);
+                    }
+                    else
+                    {
+                        _obstacles[2].SetActive(true);
+                    }
                 }
                 else
                 {
-                    _obstacles[2].SetActive(true);
-                }
-            }
-            else if (GameManager.instance.GetScore > 250 && GameManager.instance.GetScore <= 750)
-            {
-                if (_index <= 6)
-                {
-                    _obstacles[1].SetActive(true);
-                }
-                else if (_index > 6 && _index <= 8)
-                {
-                    _obstacles[0].SetActive(true);
-                }
-                else
-                {
-                    _obstacles[2].SetActive(true);
-                }
-            }
-            else
-            {
-                if (_index <= 8)
-                {
-                    _obstacles[2].SetActive(true);
-                }
-                else if (_index == 9)
-                {
-                    _obstacles[1].SetActive(true);
-                }
-                else
-                {
-                    _obstacles[0].SetActive(true);
+                    if (_index <= 8)
+                    {
+                        _obstacles[2].SetActive(true);
+                    }
+                    else if (_index == 9)
+                    {
+                        _obstacles[1].SetActive(true);
+                    }
+                    else
+                    {
+                        _obstacles[0].SetActive(true);
+                    }
                 }
             }
         }
@@ -87,13 +96,16 @@ namespace MrSanmiAndNAwakening.BubbleJourney
                 _rb2D.velocity = Vector2.zero;
             }
 
-            if (transform.position.y < 15)
+            if (transform.position.y < -35)
             {
-                for (int i =0; i < _obstacles.Length; i++) 
+                if (!initialSegment)
                 {
-                    _obstacles[i].SetActive(false);
+                    for (int i = 0; i < _obstacles.Length; i++)
+                    {
+                        _obstacles[i].SetActive(false);
+                    }
+                    _upgrade.SetActive(false);
                 }
-                _upgrade.SetActive(false);
                 gameObject.SetActive(false);
             }
         }
