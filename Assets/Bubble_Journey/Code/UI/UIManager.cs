@@ -18,9 +18,10 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         [SerializeField] protected GameObject _pausePanel;
         [SerializeField] protected TextMeshProUGUI _currentScore;
         [SerializeField] protected TextMeshProUGUI _finalScore;
-        [SerializeField] protected TextMeshProUGUI _HighScore;
+        [SerializeField] protected TextMeshProUGUI _highScore;
         [SerializeField] protected GameObject _newHighScore;
         [SerializeField] protected BJ_MobileInputHandler _mobileInputHandler;
+        [SerializeField] protected HighScoreSO _highScoreSO;
 
         #endregion
 
@@ -46,7 +47,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         {
             _gamePanel.SetActive(true);
             _defeatPanel.gameObject.SetActive(false);
-            _currentScore.text = "0";
+            _currentScore.text = "Score: 0";
         }
 
         #endregion
@@ -58,7 +59,8 @@ namespace MrSanmiAndNAwakening.BubbleJourney
             _gamePanel.gameObject.SetActive(false);
             _defeatPanel.gameObject.SetActive(true);
             GameManager.instance.StartGame = false;
-            _finalScore.text = _currentScore.text;
+            _finalScore.text = "Final Score" + '\n' + GameManager.instance.GetScore.ToString();
+            UpdateHighScore();
         }
 
         public void ActivateAndDeactivatePausePanel(bool pausePanelBool)
@@ -79,6 +81,20 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         public void UpdateScore (int score)
         {
             _currentScore.text = "Score:" + score.ToString();
+        }
+
+        #endregion
+
+        #region localMethods
+
+        protected void UpdateHighScore()
+        {
+            if (GameManager.instance.GetScore > _highScoreSO.highScore)
+            {
+                _highScoreSO.highScore = GameManager.instance.GetScore;
+                _newHighScore.gameObject.SetActive(true);
+            }
+            _highScore.text = "High Score" + '\n' + _highScoreSO.highScore.ToString();
         }
 
         #endregion
