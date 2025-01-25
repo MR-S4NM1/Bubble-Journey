@@ -49,6 +49,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         {
             if (other.gameObject.CompareTag("Obstacle"))
             {
+                Debug.Log("I HAS BEEN HIT!");
                 BubblePool.instance.AlertAboutDeath();
                 this.gameObject.SetActive(false);
             }
@@ -56,7 +57,13 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Powerup"))
+            if (other.gameObject.CompareTag("Obstacle"))
+            {
+                Debug.Log("I HAS BEEN HIT!");
+                BubblePool.instance.AlertAboutDeath();
+                this.gameObject.SetActive(false);
+            }
+            else if (other.gameObject.CompareTag("Powerup"))
             {
                 BubblePool.instance.AddBubbles();
                 other.gameObject.SetActive(false);
