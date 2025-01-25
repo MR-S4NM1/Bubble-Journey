@@ -87,6 +87,7 @@ MonoBehaviour:
   - {fileID: 3141783391035480649}
   - {fileID: 7934665810850521371}
   _upgrade: {fileID: 585341023469847010}
+  _checkpoint: {fileID: 7774926732134144267}
   initialSegment: 1
 --- !u!50 &5331004673217836520
 Rigidbody2D:
@@ -239,6 +240,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5379888332683750000, guid: 90d4129ff2692ed45b59f97114488edc, type: 3}
   m_PrefabInstance: {fileID: 1518324188336252430}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7774926732134144267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9148004248911429381, guid: 90d4129ff2692ed45b59f97114488edc, type: 3}
+  m_PrefabInstance: {fileID: 1518324188336252430}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9831b513bf28a484bab37444f634e4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1758903947696601643
 PrefabInstance:
   m_ObjectHideFlags: 0

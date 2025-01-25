@@ -3002,6 +3002,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71122fff64405204581512b27f62b619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1093500857 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7774926732134144267, guid: 74655fd89f1a6d24b81c148d21eb4d5f, type: 3}
+  m_PrefabInstance: {fileID: 8916516918813456603}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9831b513bf28a484bab37444f634e4ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1095816549
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6664,6 +6675,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 665982778}
     m_Modifications:
+    - target: {fileID: 2546970738573313442, guid: 74655fd89f1a6d24b81c148d21eb4d5f, type: 3}
+      propertyPath: _checkpoint
+      value: 
+      objectReference: {fileID: 1093500857}
     - target: {fileID: 3356382526372779384, guid: 74655fd89f1a6d24b81c148d21eb4d5f, type: 3}
       propertyPath: m_Name
       value: InitialSegment

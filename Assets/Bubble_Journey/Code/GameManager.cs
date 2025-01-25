@@ -63,6 +63,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         public void ChooseNextSegment()
         {
+            Debug.Log("entre al Game Manager");
             _index = Random.Range(0, segments.Length);
             for(int i = 0; i < segments[_index].transform.childCount ;i++)
             {
@@ -70,6 +71,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
                 {
                     segments[_index].transform.GetChild(i).gameObject.SetActive(true);
                     segments[_index].transform.GetChild(i).position = spawnpos.position;
+                    segments[_index].transform.GetChild(i).GetComponent<SegmentBehaviour>().ActivateSegment();
                     break;
                 }
             }

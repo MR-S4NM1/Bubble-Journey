@@ -11,6 +11,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         [SerializeField] protected Rigidbody2D _rb2D;
         [SerializeField] protected GameObject[] _obstacles;
         [SerializeField] protected GameObject _upgrade;
+        [SerializeField] protected Checkpoint _checkpoint;
 
         #endregion
 
@@ -27,63 +28,6 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         #endregion
 
         #region UnityMethods
-
-        private void Awake()
-        {
-            if (!initialSegment)
-            {
-                _index = Random.Range(0, 10);
-                if (_index == 7)
-                {
-                    _upgrade.SetActive(true);
-                }
-                if (GameManager.instance.GetScore <= 250)
-                {
-                    if (_index <= 8)
-                    {
-                        _obstacles[0].SetActive(true);
-                    }
-                    else if (_index == 9)
-                    {
-                        _obstacles[1].SetActive(true);
-                    }
-                    else
-                    {
-                        _obstacles[2].SetActive(true);
-                    }
-                }
-                else if (GameManager.instance.GetScore > 250 && GameManager.instance.GetScore <= 750)
-                {
-                    if (_index <= 6)
-                    {
-                        _obstacles[1].SetActive(true);
-                    }
-                    else if (_index > 6 && _index <= 8)
-                    {
-                        _obstacles[0].SetActive(true);
-                    }
-                    else
-                    {
-                        _obstacles[2].SetActive(true);
-                    }
-                }
-                else
-                {
-                    if (_index <= 8)
-                    {
-                        _obstacles[2].SetActive(true);
-                    }
-                    else if (_index == 9)
-                    {
-                        _obstacles[1].SetActive(true);
-                    }
-                    else
-                    {
-                        _obstacles[0].SetActive(true);
-                    }
-                }
-            }
-        }
 
         void FixedUpdate()
         {
@@ -108,6 +52,65 @@ namespace MrSanmiAndNAwakening.BubbleJourney
                 }
                 gameObject.SetActive(false);
             }
+        }
+
+        #endregion
+
+        #region PublicMethods
+
+        public void ActivateSegment()
+        {
+            _index = Random.Range(0, 10);
+            if (_index == 7)
+            {
+                _upgrade.SetActive(true);
+            }
+            if (GameManager.instance.GetScore <= 250)
+            {
+                if (_index <= 8)
+                {
+                    _obstacles[0].SetActive(true);
+                }
+                else if (_index == 9)
+                {
+                    _obstacles[1].SetActive(true);
+                }
+                else
+                {
+                    _obstacles[2].SetActive(true);
+                }
+            }
+            else if (GameManager.instance.GetScore > 250 && GameManager.instance.GetScore <= 750)
+            {
+                if (_index <= 6)
+                {
+                    _obstacles[1].SetActive(true);
+                }
+                else if (_index > 6 && _index <= 8)
+                {
+                    _obstacles[0].SetActive(true);
+                }
+                else
+                {
+                    _obstacles[2].SetActive(true);
+                }
+            }
+            else
+            {
+                if (_index <= 8)
+                {
+                    _obstacles[2].SetActive(true);
+                }
+                else if (_index == 9)
+                {
+                    _obstacles[1].SetActive(true);
+                }
+                else
+                {
+                    _obstacles[0].SetActive(true);
+                }
+            }
+            _checkpoint.InitializeCheckpoint();
         }
 
         #endregion

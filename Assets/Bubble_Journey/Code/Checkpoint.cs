@@ -14,19 +14,24 @@ namespace MrSanmiAndNAwakening.BubbleJourney
 
         #region UnityMethods
 
-        private void Awake()
-        {
-            _activated = false;
-        }
-
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player") && !_activated)
             {
+                Debug.Log("choque con el Player");
                 GameManager.instance.UpdateSpeed();
                 GameManager.instance.ChooseNextSegment();
                 _activated = true;
             }
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        public void InitializeCheckpoint()
+        {
+            _activated = false;
         }
 
         #endregion
