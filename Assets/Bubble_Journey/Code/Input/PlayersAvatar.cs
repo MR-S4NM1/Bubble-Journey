@@ -11,7 +11,7 @@ namespace MrSanmiAndNAwakening.BubbleJourney
         #region References
 
         [SerializeField] protected Rigidbody2D _rb2D;
-        [SerializeField] protected InputSO _inputSO;
+        [SerializeField] public InputSO _inputSO;
 
         #endregion
 
